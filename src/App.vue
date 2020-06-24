@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <Main
-      :data.sync="data"
-      @ok="ok"
-    />
+  
+    <Main :data.sync="data" @ok="ok" />
+    <div style="height:300px"></div>
   </div>
 </template>
 
@@ -20,12 +19,11 @@ export default {
       default: undefined
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   methods: {
-    ok (data) {
+    ok(data) {
       this.$emit('update:data', data)
     }
   }
