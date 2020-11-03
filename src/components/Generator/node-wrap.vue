@@ -1,13 +1,7 @@
 <template>
   <div class="node-wrap">
-    <NodeWrapBox
-      :node="node"
-      @delNode="delNode"
-    />
-    <AddNodeBtnBox
-      :node="node"
-      @addnode="addnode"
-    />
+    <NodeWrapBox :node="node" @delNode="delNode" />
+    <AddNodeBtnBox :node="node" @addnode="addnode" />
   </div>
 </template>
 <script>
@@ -20,18 +14,22 @@ export default {
     AddNodeBtnBox
   },
   props: {
+    editState: {
+      type: Boolean,
+      default: () => {
+        return false
+      }
+    },
     node: {
       type: Object,
       default: undefined
     }
   },
   methods: {
-    addnode (node) {
-      // console.log('node-wrap 新节点:')
-      // console.log(node)
+    addnode(node) {
       this.$emit('addnode', node)
     },
-    delNode () {
+    delNode() {
       this.$emit('delNode')
     }
   }

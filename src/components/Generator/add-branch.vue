@@ -1,5 +1,6 @@
 <template>
   <button
+    v-if="false"
     class="add-branch"
     @click="addCondition"
   >

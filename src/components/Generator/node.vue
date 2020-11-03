@@ -3,18 +3,21 @@
     <NodeWrap
       v-if="node.type == 'start' || node.type == 'approver' || node.type == 'notifier'"
       :node="node"
+       :editState="editState"
       @addnode="addnode"
       @delNode="delNode"
     />
     <ConditionNode
       v-if="node.type == 'condition'"
       :node.sync="node"
+       :editState="editState"
       @addnode="addnode"
       @delConditionNode="delConditionNode"
       @addConditionFactor="addConditionFactor"
     />
     <BranchWrap
       v-if="node.type == 'route'"
+       :editState="editState"
       :node="node"
       @addnode="addnode"
       @delNode="delNode"
@@ -33,6 +36,12 @@ export default {
     ConditionNode
   },
   props: {
+    editState: {
+      type: Boolean,
+      default: () => {
+        return false
+      }
+    },
     node: {
       type: Object,
       default: undefined
